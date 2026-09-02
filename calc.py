@@ -1,6 +1,35 @@
 import math
 
 
+# ---------- HISTÓRICO ----------
+
+historico = []
+
+
+def registrar_historico(operacao, num1, num2, resultado):
+    registro = f"{num1} {operacao} {num2} = {resultado}"
+    historico.append(registro)
+
+
+def exibir_historico():
+    print("\n" + "=" * 35)
+    print("        HISTÓRICO DE CONTAS")
+    print("=" * 35)
+    if not historico:
+        print("Nenhuma conta foi feita ainda.")
+    else:
+        for i, registro in enumerate(historico, start=1):
+            print(f"{i}. {registro}")
+    print("=" * 35 + "\n")
+
+
+def limpar_historico():
+    historico.clear()
+    print("\nHistórico apagado com sucesso!\n")
+
+
+# ---------- OPERAÇÕES ----------
+
 def somar(a, b):
     return a + b
 
@@ -39,6 +68,8 @@ def resto(a, b):
     return a % b
 
 
+# ---------- ENTRADA E MENU ----------
+
 def ler_numero(mensagem):
     while True:
         try:
@@ -59,9 +90,13 @@ def exibir_menu():
     print("6  - Raiz quadrada")
     print("7  - Porcentagem")
     print("8  - Resto da divisão")
+    print("9  - Ver histórico")
+    print("10 - Limpar histórico")
     print("0  - Sair")
     print("=" * 35)
 
+
+# ---------- PROGRAMA PRINCIPAL ----------
 
 def main():
     while True:
@@ -72,8 +107,16 @@ def main():
             print("\nSaindo da calculadora. Até mais!")
             break
 
-        if opcao not in {"1", "2", "3", "4", "5", "6", "7", "8"}:
+        if opcao not in {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"}:
             print("\nOpção inválida! Tente novamente.\n")
+            continue
+
+        if opcao == "9":
+            exibir_historico()
+            continue
+
+        if opcao == "10":
+            limpar_historico()
             continue
 
         try:
@@ -81,6 +124,7 @@ def main():
                 num = ler_numero("Digite o número: ")
                 resultado = raiz_quadrada(num)
                 print(f"\nResultado: √{num} = {resultado}\n")
+                registrar_historico("√", num, "", resultado)
             else:
                 num1 = ler_numero("Digite o primeiro número: ")
                 num2 = ler_numero("Digite o segundo número: ")
@@ -103,12 +147,16 @@ def main():
                 elif opcao == "7":
                     resultado = porcentagem(num1, num2)
                     print(f"\nResultado: {num2}% de {num1} = {resultado}\n")
+                    registrar_historico("%de", num1, num2, resultado)
+                    input("Pressione ENTER para continuar...")
+                    print()
                     continue
                 elif opcao == "8":
                     resultado = resto(num1, num2)
                     simbolo = "%"
 
                 print(f"\nResultado: {num1} {simbolo} {num2} = {resultado}\n")
+                registrar_historico(simbolo, num1, num2, resultado)
 
         except (ZeroDivisionError, ValueError) as erro:
             print(f"\nErro: {erro}\n")
