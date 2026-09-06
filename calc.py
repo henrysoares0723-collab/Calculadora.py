@@ -66,7 +66,18 @@ def resto(a, b):
     if b == 0:
         raise ZeroDivisionError("Não é possível calcular resto por zero.")
     return a % b
+def fatorial(a):
+    a = int(a)
+    if a < 0:
+        raise ValueError("Não é possível calcular fatorial de número negativo.")
+    resultado = 1
+    for i in range(1, a + 1):
+        resultado *= i
+    return resultado
 
+
+def media(a, b):
+    return (a + b) / 2
 
 # ---------- ENTRADA E MENU ----------
 
@@ -81,6 +92,8 @@ def ler_numero(mensagem):
 def exibir_menu():
     print("=" * 35)
     print("        CALCULADORA PYTHON")
+    print("11 - Fatorial")
+    print("12 - Média entre dois números")
     print("=" * 35)
     print("1  - Somar")
     print("2  - Subtrair")
@@ -95,7 +108,6 @@ def exibir_menu():
     print("0  - Sair")
     print("=" * 35)
 
-
 # ---------- PROGRAMA PRINCIPAL ----------
 
 def main():
@@ -106,6 +118,12 @@ def main():
         if opcao == "0":
             print("\nSaindo da calculadora. Até mais!")
             break
+
+        elif opcao == "11":
+                num = ler_numero("Digite o número: ")
+                resultado = fatorial(num)
+                print(f"\nResultado: {int(num)}! = {resultado}\n")
+                registrar_historico("!", num, "", resultado)
 
         if opcao not in {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"}:
             print("\nOpção inválida! Tente novamente.\n")
@@ -135,6 +153,9 @@ def main():
                 elif opcao == "2":
                     resultado = subtrair(num1, num2)
                     simbolo = "-"
+                elif opcao == "12":
+                    resultado = media(num1, num2)
+                    simbolo = "média"
                 elif opcao == "3":
                     resultado = multiplicar(num1, num2)
                     simbolo = "*"
