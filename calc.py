@@ -78,7 +78,12 @@ def fatorial(a):
 
 def media(a, b):
     return (a + b) / 2
+def celsius_para_fahrenheit(c):
+    return (c * 9/5) + 32
 
+
+def fahrenheit_para_celsius(f):
+    return (f - 32) * 5/9
 # ---------- ENTRADA E MENU ----------
 
 def ler_numero(mensagem):
@@ -92,8 +97,6 @@ def ler_numero(mensagem):
 def exibir_menu():
     print("=" * 35)
     print("        CALCULADORA PYTHON")
-    print("11 - Fatorial")
-    print("12 - Média entre dois números")
     print("=" * 35)
     print("1  - Somar")
     print("2  - Subtrair")
@@ -105,6 +108,10 @@ def exibir_menu():
     print("8  - Resto da divisão")
     print("9  - Ver histórico")
     print("10 - Limpar histórico")
+    print("11 - Fatorial")
+    print("12 - Média entre dois números")
+    print("13 - Converter Celsius para Fahrenheit")
+    print("14 - Converter Fahrenheit para Celsius")
     print("0  - Sair")
     print("=" * 35)
 
@@ -118,12 +125,6 @@ def main():
         if opcao == "0":
             print("\nSaindo da calculadora. Até mais!")
             break
-
-        elif opcao == "11":
-                num = ler_numero("Digite o número: ")
-                resultado = fatorial(num)
-                print(f"\nResultado: {int(num)}! = {resultado}\n")
-                registrar_historico("!", num, "", resultado)
 
         if opcao not in {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14"}:
             print("\nOpção inválida! Tente novamente.\n")
@@ -143,6 +144,21 @@ def main():
                 resultado = raiz_quadrada(num)
                 print(f"\nResultado: √{num} = {resultado}\n")
                 registrar_historico("√", num, "", resultado)
+            elif opcao == "11":
+                num = ler_numero("Digite o número: ")
+                resultado = fatorial(num)
+                print(f"\nResultado: {int(num)}! = {resultado}\n")
+                registrar_historico("!", num, "", resultado)
+            elif opcao == "13":
+                num = ler_numero("Digite a temperatura em Celsius: ")
+                resultado = celsius_para_fahrenheit(num)
+                print(f"\nResultado: {num}°C = {resultado}°F\n")
+                registrar_historico("°C→°F", num, "", resultado)
+            elif opcao == "14":
+                num = ler_numero("Digite a temperatura em Fahrenheit: ")
+                resultado = fahrenheit_para_celsius(num)
+                print(f"\nResultado: {num}°F = {resultado}°C\n")
+                registrar_historico("°F→°C", num, "", resultado)
             else:
                 num1 = ler_numero("Digite o primeiro número: ")
                 num2 = ler_numero("Digite o segundo número: ")
