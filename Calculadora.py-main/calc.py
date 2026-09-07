@@ -367,3 +367,20 @@ def exibir_menu():
 
         input("Pressione ENTER para continuar...")
         print()
+
+def calcular_imc(peso, altura):
+    if altura <= 0:
+        raise ValueError("A altura deve ser maior que zero.")
+    return peso / (altura ** 2)
+
+def exibir_menu():
+    print("19 - Calcular IMC")
+
+def main():
+    exibir_menu()
+    altura = ler_numero("Digite a altura (m): ")
+    resultado = calcular_imc(peso, altura)
+    print(f"\nResultado: IMC = {resultado:.2f}\n")
+    registrar_historico("IMC", peso, altura, resultado)
+    ultimo_resultado = resultado
+    
