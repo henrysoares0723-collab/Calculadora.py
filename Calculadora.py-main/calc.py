@@ -225,8 +225,7 @@ def memoria_limpar():
     global memoria
     memoria = 0.0
     print("\nMemória zerada com sucesso!\n")
-    def exibir_menu():
-    print("=" * 35)
+def exibir_menu():
     print("        CALCULADORA PYTHON")
     print("=" * 35)
     print("1  - Somar")
