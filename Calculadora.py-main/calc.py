@@ -225,7 +225,8 @@ def memoria_limpar():
     global memoria
     memoria = 0.0
     print("\nMemória zerada com sucesso!\n")
-    def exibir_menu():
+
+def exibir_menu():
     print("=" * 35)
     print("        CALCULADORA PYTHON")
     print("=" * 35)
@@ -250,4 +251,119 @@ def memoria_limpar():
     print("18 - Subtrair último resultado da memória (M-)")
     print("0  - Sair")
     print("=" * 35)
-    
+
+    def main():
+        ultimo_resultado = None
+
+    while True:
+        exibir_menu()
+        opcao = input("Escolha uma opção: ").strip()
+
+        if opcao == "0":
+            print("\nSaindo da calculadora. Até mais!")
+            break
+
+        opcoes_validas = {str(i) for i in range(1, 19)}
+        if opcao not in opcoes_validas:
+            print("\nOpção inválida! Tente novamente.\n")
+            continue
+
+        if opcao == "9":
+            exibir_historico()
+            input("Pressione ENTER para continuar...")
+            continue
+
+        if opcao == "10":
+            limpar_historico()
+            input("Pressione ENTER para continuar...")
+            continue
+
+        if opcao == "15":
+            memoria_mostrar()
+            input("Pressione ENTER para continuar...")
+            continue
+
+        if opcao == "16":
+            memoria_limpar()
+            input("Pressione ENTER para continuar...")
+            continue
+
+        if opcao in {"17", "18"}:
+            if ultimo_resultado is None:
+                print("\nNenhum cálculo recente para salvar na memória.\n")
+            else:
+                if opcao == "17":
+                    memoria_adicionar(ultimo_resultado)
+                else:
+                    memoria_subtrair(ultimo_resultado)
+            input("Pressione ENTER para continuar...")
+            continue
+
+        try:
+            if opcao == "6":
+                num = ler_numero("Digite o número: ")
+                resultado = raiz_quadrada(num)
+                print(f"\nResultado: √{num} = {resultado}\n")
+                registrar_historico("√", num, "", resultado)
+                ultimo_resultado = resultado
+            elif opcao == "11":
+                num = ler_numero("Digite o número: ")
+                resultado = fatorial(num)
+                print(f"\nResultado: {int(num)}! = {resultado}\n")
+                registrar_historico("!", num, "", resultado)
+                ultimo_resultado = resultado
+            elif opcao == "13":
+                num = ler_numero("Digite a temperatura em Celsius: ")
+                resultado = celsius_para_fahrenheit(num)
+                print(f"\nResultado: {num}°C = {resultado}°F\n")
+                registrar_historico("°C→°F", num, "", resultado)
+                ultimo_resultado = resultado
+            elif opcao == "14":
+                num = ler_numero("Digite a temperatura em Fahrenheit: ")
+                resultado = fahrenheit_para_celsius(num)
+                print(f"\nResultado: {num}°F = {resultado}°C\n")
+                registrar_historico("°F→°C", num, "", resultado)
+                ultimo_resultado = resultado
+            else:
+                num1 = ler_numero("Digite o primeiro número: ")
+                num2 = ler_numero("Digite o segundo número: ")
+
+                if opcao == "1":
+                    resultado = somar(num1, num2)
+                    simbolo = "+"
+                elif opcao == "2":
+                    resultado = subtrair(num1, num2)
+                    simbolo = "-"
+                elif opcao == "3":
+                    resultado = multiplicar(num1, num2)
+                    simbolo = "*"
+                elif opcao == "4":
+                    resultado = dividir(num1, num2)
+                    simbolo = "/"
+                elif opcao == "5":
+                    resultado = potencia(num1, num2)
+                    simbolo = "^"
+                elif opcao == "7":
+                    resultado = porcentagem(num1, num2)
+                    print(f"\nResultado: {num2}% de {num1} = {resultado}\n")
+                    registrar_historico("%de", num1, num2, resultado)
+                    ultimo_resultado = resultado
+                    input("Pressione ENTER para continuar...")
+                    print()
+                    continue
+                elif opcao == "8":
+                    resultado = resto(num1, num2)
+                    simbolo = "%"
+                elif opcao == "12":
+                    resultado = media(num1, num2)
+                    simbolo = "média"
+
+                print(f"\nResultado: {num1} {simbolo} {num2} = {resultado}\n")
+                registrar_historico(simbolo, num1, num2, resultado)
+                ultimo_resultado = resultado
+
+        except (ZeroDivisionError, ValueError) as erro:
+            print(f"\nErro: {erro}\n")
+
+        input("Pressione ENTER para continuar...")
+        print()
