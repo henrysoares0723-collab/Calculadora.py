@@ -107,3 +107,4 @@ Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para ma
 
 Feito com 💻 por **Henry**
 
+# Calculadora - validação correta
