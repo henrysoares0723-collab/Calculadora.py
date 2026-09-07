@@ -49,7 +49,13 @@ def dividir(a, b):
 
 
 def potencia(a, b):
-    return a ** b
+    try:
+        return a ** b
+    except ZeroDivisionError:
+        # Cobre o caso de 0 elevado a expoente negativo (0 ** -1, por exemplo)
+        raise ZeroDivisionError("Não é possível elevar 0 a um expoente negativo.")
+    except OverflowError:
+        raise OverflowError("O resultado da potência é grande demais para ser calculado.")
 
 
 def raiz_quadrada(a):
@@ -87,11 +93,44 @@ def fahrenheit_para_celsius(f):
 # ---------- ENTRADA E MENU ----------
 
 def ler_numero(mensagem):
+    """
+    Lê um número do usuário, validando a entrada.
+    - Impede letras, símbolos ou texto vazio.
+    - Aceita tanto ponto quanto vírgula como separador decimal.
+    - Repete a pergunta até receber um valor numérico válido.
+    """
     while True:
+        entrada = input(mensagem).strip()
+
+        if entrada == "":
+            print("Entrada vazia. Digite um número válido.\n")
+            continue
+
+        # Permite que o usuário digite números com vírgula (ex: 3,5)
+        entrada_normalizada = entrada.replace(",", ".")
+
         try:
-            return float(input(mensagem))
+            return float(entrada_normalizada)
         except ValueError:
-            print("Entrada inválida. Digite um número válido.\n")
+            print(f"Entrada inválida: '{entrada}' não é um número. Digite apenas números.\n")
+
+
+def ler_opcao(mensagem, opcoes_validas):
+    """
+    Lê a opção do menu, validando se é um número inteiro dentro das opções permitidas.
+    """
+    while True:
+        entrada = input(mensagem).strip()
+
+        if not entrada.isdigit():
+            print(f"Opção inválida: '{entrada}'. Digite apenas o número da opção desejada.\n")
+            continue
+
+        if entrada not in opcoes_validas:
+            print("Opção inválida! Escolha um número do menu.\n")
+            continue
+
+        return entrada
 
 
 def exibir_menu():
@@ -117,10 +156,13 @@ def exibir_menu():
 
 # ---------- PROGRAMA PRINCIPAL ----------
 
+OPCOES_VALIDAS = {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10"}
+
+
 def main():
     while True:
         exibir_menu()
-        opcao = input("Escolha uma opção: ").strip()
+        opcao = ler_opcao("Escolha uma opção: ", OPCOES_VALIDAS)
 
         if opcao == "0":
             print("\nSaindo da calculadora. Até mais!")
@@ -195,7 +237,7 @@ def main():
                 print(f"\nResultado: {num1} {simbolo} {num2} = {resultado}\n")
                 registrar_historico(simbolo, num1, num2, resultado)
 
-        except (ZeroDivisionError, ValueError) as erro:
+        except (ZeroDivisionError, ValueError, OverflowError) as erro:
             print(f"\nErro: {erro}\n")
 
         input("Pressione ENTER para continuar...")
@@ -203,4 +245,7 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    try:
+        main()
+    except KeyboardInterrupt:
+        print("\n\nPrograma interrompido pelo usuário. Até mais!")

@@ -227,7 +227,6 @@ def memoria_limpar():
     print("\nMemória zerada com sucesso!\n")
 
 def exibir_menu():
-    print("=" * 35)
     print("        CALCULADORA PYTHON")
     print("=" * 35)
     print("1  - Somar")
@@ -378,6 +377,7 @@ def exibir_menu():
 
 def main():
     exibir_menu()
+    peso = ler_numero("Digite o peso: ")
     altura = ler_numero("Digite a altura (m): ")
     resultado = calcular_imc(peso, altura)
     print(f"\nResultado: IMC = {resultado:.2f}\n")
