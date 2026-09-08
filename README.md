@@ -52,13 +52,13 @@ cd nome-do-repositorio
 3. Execute o arquivo principal:
 
 ```bash
-python calculadora.py
+python calc.py
 ```
 
 ou, dependendo do seu sistema:
 
 ```bash
-python3 calculadora.py
+python3 calc.py
 ```
 
 ## 💻 Exemplo de Uso
@@ -83,7 +83,7 @@ Resultado: 15.0
 ```
 nome-do-repositorio/
 │
-├── calculadora.py      # Arquivo principal com a lógica da calculadora
+├── digite: calc.py     # Arquivo principal com a lógica da calculadora
 └── README.md            # Documentação do projeto
 ```
 
