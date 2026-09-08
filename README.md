@@ -1,109 +1,56 @@
 # 🧮 Calculadora em Python
 
-Uma calculadora simples desenvolvida **100% em Python**, sem dependências externas, capaz de realizar as operações matemáticas básicas de forma prática e direta pelo terminal.
+Este projeto consiste em uma **calculadora desenvolvida em Python**, criada com o objetivo de praticar conceitos fundamentais da linguagem e aplicar os conhecimentos adquiridos durante os estudos.
 
-## 📋 Sobre o Projeto
+## 🚀 Funcionalidades
 
-Este projeto tem como objetivo demonstrar a implementação de uma calculadora funcional utilizando apenas recursos nativos da linguagem Python. É ideal para fins de estudo, prática de lógica de programação e como base para projetos maiores.
+A calculadora permite realizar operações matemáticas básicas, como:
 
-## ✨ Funcionalidades
+* ➕ Adição
+* ➖ Subtração
+* ✖️ Multiplicação
+* ➗ Divisão
 
-- ➕ Adição
-- ➖ Subtração
-- ✖️ Multiplicação
-- ➗ Divisão
-- 🔁 Loop de operações contínuas (permite realizar vários cálculos sem reiniciar o programa)
-- ⚠️ Tratamento de erros (como divisão por zero e entradas inválidas)
+## 🛠️ Tecnologias utilizadas
 
-## 🛠️ Tecnologias Utilizadas
+* Python
 
-- [Python 3](https://www.python.org/) — única linguagem utilizada no projeto, sem bibliotecas externas.
+## 📚 Objetivo do projeto
 
-## 📦 Pré-requisitos
+Este projeto foi desenvolvido com foco no aprendizado e na prática da lógica de programação utilizando Python.
 
-Antes de começar, você precisa ter o Python instalado em sua máquina. Você pode baixá-lo em [python.org](https://www.python.org/downloads/).
+Durante o desenvolvimento, foram utilizados conceitos como:
 
-Para verificar se já possui o Python instalado, rode:
+* Variáveis
+* Condicionais (`if`, `elif` e `else`)
+* Laços de repetição
+* Funções
+* Entrada e saída de dados
 
-```bash
-python --version
-```
-
-ou
-
-```bash
-python3 --version
-```
-
-## 🚀 Como Executar
+## ▶️ Como executar o projeto
 
 1. Clone este repositório:
 
 ```bash
-git clone https://github.com/seu-usuario/nome-do-repositorio.git
+git clone https://github.com/henrysoares0723-collab/Calculadora.py.git
 ```
 
-2. Acesse a pasta do projeto:
+2. Entre na pasta do projeto:
 
 ```bash
-cd nome-do-repositorio
+cd Calculadora.py
 ```
 
-3. Execute o arquivo principal:
+3. Execute o arquivo Python:
 
 ```bash
-python calc.py
+python nome_do_arquivo.py
 ```
 
-ou, dependendo do seu sistema:
+## 👨‍💻 Autor
 
-```bash
-python3 calc.py
-```
+Desenvolvido por **Henry Soares**.
 
-## 💻 Exemplo de Uso
+---
 
-```
-=== CALCULADORA EM PYTHON ===
-Escolha a operação:
-1 - Soma
-2 - Subtração
-3 - Multiplicação
-4 - Divisão
-5 - Sair
-
-Opção: 1
-Digite o primeiro número: 10
-Digite o segundo número: 5
-Resultado: 15.0
-```
-
-## 📁 Estrutura do Projeto
-
-```
-nome-do-repositorio/
-│
-├── digite: calc.py     # Arquivo principal com a lógica da calculadora
-└── README.md            # Documentação do projeto
-```
-
-> Ajuste esta seção caso o projeto possua mais arquivos ou esteja organizado em módulos.
-
-## 🤝 Como Contribuir
-
-Contribuições são sempre bem-vindas! Para contribuir:
-
-1. Faça um fork do projeto
-2. Crie uma branch para sua feature (`git checkout -b feature/nova-funcionalidade`)
-3. Faça o commit das suas alterações (`git commit -m 'Adiciona nova funcionalidade'`)
-4. Faça o push para a branch (`git push origin feature/nova-funcionalidade`)
-5. Abra um Pull Request
-
-## 📄 Licença
-
-Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
-
-## 👤 Autor
-
-Feito com 💻 por **Henry**
-
+⭐ Projeto desenvolvido como parte dos meus estudos em **Análise e Desenvolvimento de Sistemas (ADS)** e programação em **Python**.
